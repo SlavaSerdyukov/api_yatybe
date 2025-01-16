@@ -1,0 +1,1 @@
+STR_MAX_LENGTH = 30

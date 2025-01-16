@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from .constants import STR_MAX_LENGTH
+
 User = get_user_model()
 
 
@@ -18,7 +20,7 @@ class Group(models.Model):
     )
 
     def __str__(self):
-        return self.title[:30]
+        return self.title[:STR_MAX_LENGTH]
 
     class Meta:
         verbose_name = 'Группа'
@@ -53,7 +55,7 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        return self.text[:30]
+        return self.text[:STR_MAX_LENGTH]
 
     class Meta:
         default_related_name = '%(class)ss'
@@ -83,7 +85,7 @@ class Comment(models.Model):
     )
 
     def __str__(self):
-        return f'{self.author} - {self.post}: {self.text[:30]}'
+        return f'{self.author} - {self.post}: {self.text[:STR_MAX_LENGTH]}'
 
     class Meta:
         default_related_name = '%(class)ss'
