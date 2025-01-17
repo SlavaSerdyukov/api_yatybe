@@ -19,12 +19,12 @@ class Group(models.Model):
         verbose_name='Описание группы'
     )
 
-    def __str__(self):
-        return self.title[:STR_MAX_LENGTH]
-
     class Meta:
         verbose_name = 'Группа'
         verbose_name_plural = 'Группы'
+
+    def __str__(self):
+        return self.title[:STR_MAX_LENGTH]
 
 
 class Post(models.Model):
@@ -54,13 +54,13 @@ class Post(models.Model):
         verbose_name='Группа'
     )
 
-    def __str__(self):
-        return self.text[:STR_MAX_LENGTH]
-
     class Meta:
         default_related_name = '%(class)ss'
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+    def __str__(self):
+        return self.text[:STR_MAX_LENGTH]
 
 
 class Comment(models.Model):
@@ -84,10 +84,10 @@ class Comment(models.Model):
         db_index=True
     )
 
-    def __str__(self):
-        return f'{self.author} - {self.post}: {self.text[:STR_MAX_LENGTH]}'
-
     class Meta:
         default_related_name = '%(class)ss'
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
+
+    def __str__(self):
+        return f'{self.author} - {self.post}: {self.text[:STR_MAX_LENGTH]}'
